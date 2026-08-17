@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two Screens</title>
+</head>
+<body>
+
+<div id="screen1">
+    <h2>Screen 1</h2>
+
+    <input type="text" id="name">
+
+    <button onclick="nextScreen()">Next</button>
+</div>
+
+<div id="screen2" style="display:none;">
+    <h2>Screen 2</h2>
+
+    <h3 id="display"></h3>
+</div>
+
+<script>
+
+function nextScreen(){
+
+    let name = document.getElementById("name").value;
+
+    document.getElementById("screen1").style.display = "none";
+
+    document.getElementById("screen2").style.display = "block";
+
+    document.getElementById("display").innerHTML = name;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "title"> Hello!! </h1>
+    <button onclick="changeText()"> Click  here </button>
+    <button onclick="greet()"> Hello</button>
+    <p class="message">
+        One 
+    </p>
+    <p class="message">
+        Two 
+    </p>
+
+    <script src = "home.js"></script>
+
+    <h2>User Registration Form</h2>
+
+    <form>
+        <label for="username">Username: </label> <span id="userErrorID" style="color: red;"></span><br>
+        <input type="text" id="username" name="username" onblur ="validateName()"><br><br>
+
+        <label for="fullname">Full Name: </label><br>
+        <input type="text" id="fullname" name="fullname"><br><br>
+
+        <label for="email">Email: </label><br>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="phone">Phone Number: </label><br>
+        <input type="tel" id="phone" name="phone"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background : #756d6d;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+header p {
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  margin-left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #61dafb;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  background: #141212;
+}
+
+.nav-list-item{
+  margin-right: 20px;
+}
+
+.nav-logo{
+  width: 25px;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  background-color: #141212;
+  width: 100%;
+}

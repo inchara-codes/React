@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen 1</title>
+
+    <script>
+
+        function validateForm() {
+
+            let msg = document.getElementById("nameInput").value;
+
+            if (msg == "") {
+
+                alert("Please enter a message");
+
+                return false;
+
+            }
+
+            return true;
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h2>Enter your message</h2>
+
+    <form action="screen2.html" method="get" onsubmit="return validateForm()">
+
+        <input type="text" id="nameInput" placeholder="Enter message" name="Data">
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+</html>
