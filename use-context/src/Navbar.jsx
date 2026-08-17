@@ -7,7 +7,10 @@ export default function Navbar() {
   const [nameInput, setNameInput] = useState('');
 
   return (
-    <nav style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
+    <nav style={{ display: 'flex', 
+                  justifyContent: 'space-between',  
+                  borderBottom: '1px solid #ccc', 
+                  paddingBottom: '10px' }}>
       <h2>My App Logo</h2>
       
       {user ? (
