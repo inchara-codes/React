@@ -68,7 +68,7 @@ export default function App() {
           <input 
           type="checkbox"
           checked ={agree}
-          onChange={(e) => setAgree(e.target.value)}
+          onChange={(e) => setAgree(e.target.checked)}
            />
            I agree to all terms and conditions.
         </p>
