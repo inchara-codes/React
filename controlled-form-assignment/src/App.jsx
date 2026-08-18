@@ -9,7 +9,6 @@ export default function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     console.log("Name:", name);
     console.log("Email:", email);
     console.log("Gender:", gender);
