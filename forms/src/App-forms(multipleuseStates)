@@ -1,0 +1,64 @@
+<!-- import { useState } from "react";
+
+export default function App (){
+  // const [name, setName] = useState("")
+  // const [email, setEmail] = useState("")
+  const [formData, setFormData] = useState(
+    {
+      name : "", email : ""
+    }
+  )
+
+
+  function handleSubmit(e){
+    e.preventDefault();
+  }
+
+  function handleReset(){
+    setFormData({
+      name : "",
+      email : ""
+    })
+  }
+  function handleChange(e){
+    const {name, value } = e.target
+    // const {email, emailValue } = e.target 
+    setFormData({
+      ...formData, 
+      [name] : value,
+      // [email] : value
+
+    
+    });
+
+  }
+  return(
+    <div>
+      <h2>Controlled component</h2>
+      <form onSubmit={handleSubmit}>
+      <p>Name: </p>
+      <input 
+      type="text" 
+      name="name"
+      value={formData.name}
+      // onChange={(e) => setFormData.name(e.target.value)}
+      onChange={handleChange}
+      /> <br />
+
+      <input 
+      type="email"
+      name="email"
+      value={formData.email}
+      // onChange={(e) => setEmail(e.target.value)}
+      onChange={handleChange}
+      /> 
+      <br />
+      <button type="submit">Submit</button> <br />
+      <button type="submit" onClick={handleReset}>Reset</button>
+      </form>
+      <p>Name: {formData.name}</p>
+      <p>Email: {formData.email}</p>
+      
+    </div>
+  )
+} -->
