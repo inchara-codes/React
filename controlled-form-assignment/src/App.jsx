@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 
 export default function App() {
   const [name, setName] = useState("")
@@ -24,25 +25,28 @@ export default function App() {
     setCourse("");
   }
   return (
-    <div>
+    <div className="container">
       <h2>Controlled component</h2>
       <form onSubmit={handleSubmit}>
+        <div className="form-row">
         <label>Name:</label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         /> <br />
+        </div>
 
-
+        <div className="form-row">
         <label>Email:</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         /><br />
+        </div>
 
-
+        <div className="form-row">
         <p>Gender: </p>
         <label>
         <input 
@@ -63,7 +67,9 @@ export default function App() {
         onChange={(e) => setGender(e.target.value)}
          />
         Female </label> <br />
+        </div>
 
+        <div className="form-row">
         <p>
           <input 
           type="checkbox"
@@ -72,7 +78,9 @@ export default function App() {
            />
            I agree to all terms and conditions.
         </p>
+        </div>
 
+        <div className="form-row">
         <p>Course: </p>
         <select
         value={course}
@@ -84,6 +92,7 @@ export default function App() {
         <option value="SQL">SQL</option>
         <option value="Angular">Angular</option>
         </select> <br /> <br />
+        </div>
 
         <button type="submit">Submit</button> <br />
         <button type="submit" onClick={handleReset}>Reset</button>
