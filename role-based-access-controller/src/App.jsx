@@ -1,122 +1,172 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect, useState } from "react";
+
+import Login from "./components/Login";
+import Navbar from "./components/Navbar";
+import StudentForm from "./components/StudentForm";
+import StudentList from "./components/StudentList";
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [students, setStudents] = useState([]);
+
+  const [showForm, setShowForm] = useState(false);
+
+  const [editIndex, setEditIndex] = useState(-1);
+
+  const [search, setSearch] = useState("");
+
+  // LOAD STUDENTS FROM LOCAL STORAGE
+  useEffect(() => {
+    const savedStudents =
+      JSON.parse(localStorage.getItem("students")) || [];
+    setStudents(savedStudents);
+  }, []);
+
+  // SAVE STUDENTS TO LOCAL STORAGE
+  useEffect(() => {
+    localStorage.setItem(
+      "students",
+      JSON.stringify(students)
+    );
+
+  }, [students]);
+
+  // LOGIN
+  const login = () => {
+    setIsLoggedIn(true);
+  };
+
+  // LOGOUT
+  const logout = () => {
+    setIsLoggedIn(false);
+    setShowForm(false);
+    setEditIndex(-1);
+  };
+
+  // SHOW ADD FORM
+  const handleAddStudent = () => {
+    setEditIndex(-1);
+    setShowForm(true);
+  };
+
+  // CLOSE FORM
+  const handleCloseForm = () => {
+    setShowForm(false);
+    setEditIndex(-1);
+  };
+
+  // ADD STUDENT
+  const addStudent = (student) => {
+    setStudents([...students, student]);
+    setShowForm(false);
+  };
+
+  // EDIT STUDENT
+  const editStudent = (index) => {
+    setEditIndex(index);
+    setShowForm(true);
+  };
+
+  // UPDATE STUDENT
+  const updateStudent = (updatedStudent) => {
+    const updatedStudents = [...students];
+    updatedStudents[editIndex] = updatedStudent;
+    setStudents(updatedStudents);
+    setEditIndex(-1);
+    setShowForm(false);
+  };
+
+  // DELETE STUDENT
+  const deleteStudent = (index) => {
+    const answer = window.confirm(
+      "Are you sure you want to delete this student?"
+    );
+
+    if (answer) {
+      const updatedStudents =
+        students.filter((_, i) => i !== index);
+      setStudents(updatedStudents);
+
+    }
+
+  };
+
+  // SEARCH
+  const filteredStudents = students.filter((student) => {
+    const keyword = search.toLowerCase();
+
+    return (
+      student.id.toLowerCase().includes(keyword) ||
+      student.name.toLowerCase().includes(keyword) ||
+      student.email.toLowerCase().includes(keyword)
+    );
+  });
+
+  // IF NOT LOGGED IN
+  if (!isLoggedIn) {
+
+    return (
+      <Login onLogin={login} />
+    );
+
+  }
+
+  // LOGGED IN UI
   return (
+
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+      <Navbar onLogout={logout} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <div className="container mt-4">
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        {/* STUDENT FORM */}
+
+        {showForm && (
+
+          <StudentForm
+
+            students={students}
+
+            editIndex={editIndex}
+
+            onAddStudent={addStudent}
+
+            onUpdateStudent={updateStudent}
+
+            onClose={handleCloseForm}
+
+          />
+
+        )}
+
+
+        {/* STUDENT LIST */}
+
+        <StudentList
+
+          students={filteredStudents}
+
+          search={search}
+
+          setSearch={setSearch}
+
+          onAdd={handleAddStudent}
+
+          onEdit={editStudent}
+
+          onDelete={deleteStudent}
+
+        />
+
+      </div>
+
     </>
-  )
+
+  );
+
 }
 
-export default App
+export default App;
