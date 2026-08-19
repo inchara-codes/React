@@ -94,7 +94,7 @@ export default function App() {
         </select> <br /> <br />
         </div>
 
-        <button type="submit">Submit</button> <br />
+        <button type="submit">Submit</button> 
         <button type="submit" onClick={handleReset}>Reset</button>
       </form>
     </div>
