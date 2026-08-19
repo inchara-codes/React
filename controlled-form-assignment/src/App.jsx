@@ -111,8 +111,9 @@ export default function App() {
         value="Female"
         checked={gender==="Female"}
         onChange={(e) => setGender(e.target.value)}
-         /> {errors.gender && <p className="error">{errors.gender}</p>}
-        Female </label> <br />
+         /> Female </label> 
+        {errors.gender && <p className="error">{errors.gender}</p>}
+        <br />
         </div>
 
         <div className="form-row">
