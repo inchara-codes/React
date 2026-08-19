@@ -4,7 +4,7 @@ h2 {
 }
 
 .container {
-  width: 400px;
+  width: 500px;
   margin: 50px auto;
   text-align: center;
   background-color: rgb(63, 66, 68);
@@ -22,4 +22,14 @@ button {
 button:hover {
   background-color: #333;
   color: white;
+}
+
+.form-row{
+  color: white;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin: 4px 0 0 80px;
 }

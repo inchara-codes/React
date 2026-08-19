@@ -76,7 +76,7 @@ export default function App() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         /> 
-        {errors.name && <p>{errors.name}</p>}
+        {errors.name && <p className="error">{errors.name}</p>}
         <br />
         
         </div>
@@ -88,7 +88,7 @@ export default function App() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className="error">{errors.email}</p>}
         <br />
         </div>
 
@@ -101,7 +101,7 @@ export default function App() {
         value="Male"
         checked={gender==="Male"}
         onChange={(e) => setGender(e.target.value)}
-         /> {errors.gender && <p>{errors.gender}</p>}
+         />
         Male </label> 
 
         <label>
@@ -111,7 +111,7 @@ export default function App() {
         value="Female"
         checked={gender==="Female"}
         onChange={(e) => setGender(e.target.value)}
-         /> {errors.gender && <p>{errors.gender}</p>}
+         /> {errors.gender && <p className="error">{errors.gender}</p>}
         Female </label> <br />
         </div>
 
@@ -124,7 +124,7 @@ export default function App() {
            />
            I agree to all terms and conditions.
         </p>
-        {errors.agree && <p>{errors.agree}</p>}
+        {errors.agree && <p className="error">{errors.agree}</p>}
         </div>
 
         <div className="form-row">
@@ -139,7 +139,7 @@ export default function App() {
         <option value="SQL">SQL</option>
         <option value="Angular">Angular</option>
         </select> 
-        {errors.course && <p>{errors.course}</p>}
+        {errors.course && <p className="error">{errors.course}</p>}
         <br /> <br />
         </div>
 
