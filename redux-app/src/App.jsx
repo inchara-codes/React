@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, reset } from "./redux/counterSlice";
+import { increment, decrement, reset, million } from "./redux/counterSlice";
 
 function App() {
-  const count = useSelector((state) => state.counter.value);
+  const count = useSelector((state) => {console.log(state); return state.counter.value});
 
   const dispatch = useDispatch();
 
@@ -20,6 +20,10 @@ function App() {
 
       <button onClick={() => dispatch(reset())}>
         Reset
+      </button>
+
+      <button onClick={() => dispatch(million())}>
+        Million
       </button>
     </div>
   );

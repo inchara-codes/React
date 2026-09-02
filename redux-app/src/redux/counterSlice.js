@@ -18,10 +18,13 @@ const counterSlice = createSlice({
 
     reset: (state) => {
       state.value = 0;
+    },
+    million: (state) => {
+      state.value = 1000000
     }
   }
 });
 
-export const { increment, decrement, reset } = counterSlice.actions;
+export const { increment, decrement, reset, million } = counterSlice.actions;
 
 export default counterSlice.reducer;
